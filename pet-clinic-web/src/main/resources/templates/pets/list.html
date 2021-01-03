@@ -6,5 +6,15 @@
 </head>
 <body>
 <h1 th:text="'Pets list'">Index Page</h1>
+<table>
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+    </tr>
+    <tr th:each = "pet : ${pets}">
+        <td th:text="${pet.id}"></td>
+        <td th:text="${pet.name}"></td>
+    </tr>
+</table>
 </body>
 </html>

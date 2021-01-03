@@ -1,8 +1,10 @@
 package com.sago.springframework.petclinic.bootstrap;
 
 import com.sago.springframework.petclinic.model.Owner;
+import com.sago.springframework.petclinic.model.Pet;
 import com.sago.springframework.petclinic.model.Vet;
 import com.sago.springframework.petclinic.services.OwnerService;
+import com.sago.springframework.petclinic.services.PetService;
 import com.sago.springframework.petclinic.services.VetService;
 import com.sago.springframework.petclinic.services.map.OwnerServiceMap;
 import com.sago.springframework.petclinic.services.map.VetServiceMap;
@@ -14,10 +16,12 @@ public class DataLoader implements CommandLineRunner {
 
     private final OwnerService ownerService;
     private final VetService vetService;
+    private final PetService petService;
 
-    public DataLoader(OwnerService ownerService, VetService vetService) {
+    public DataLoader(OwnerService ownerService, VetService vetService, PetService petService) {
         this.ownerService = ownerService;
         this.vetService = vetService;
+        this.petService = petService;
     }
 
     @Override
@@ -51,6 +55,16 @@ public class DataLoader implements CommandLineRunner {
 
         System.out.println("Vets Loaded...");
 
+        Pet pet = new Pet();
+        pet.setId(78L);
+        pet.setName("Cherry");
+        petService.save(pet);
 
+        pet = new Pet();
+        pet.setId(1L);
+        pet.setName("Sam");
+        petService.save(pet);
+
+        System.out.println("Pets Loaded...");
     }
 }
