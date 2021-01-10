@@ -1,20 +1,24 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{fragments/layout :: layout (~{::body},'pets')}">
 <head>
     <meta charset="UTF-8">
     <title>List of Pets</title>
 </head>
 <body>
-<h1 th:text="'Pets list'">Index Page</h1>
-<table>
-    <tr>
-        <th>Id</th>
-        <th>Name</th>
-    </tr>
-    <tr th:each = "pet : ${pets}">
-        <td th:text="${pet.id}"></td>
-        <td th:text="${pet.name}"></td>
-    </tr>
+<h2 th:text="'Pets list'">Pets list</h2>
+<table id="pets" class="table table-striped">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr th:each="pet : ${pets}">
+            <td th:text="${pet.id}"></td>
+            <td th:text="${pet.name}"></td>
+        </tr>
+    </tbody>
 </table>
 </body>
 </html>
