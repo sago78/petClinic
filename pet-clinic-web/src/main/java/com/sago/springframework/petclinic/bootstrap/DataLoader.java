@@ -6,8 +6,6 @@ import com.sago.springframework.petclinic.model.Vet;
 import com.sago.springframework.petclinic.services.OwnerService;
 import com.sago.springframework.petclinic.services.PetService;
 import com.sago.springframework.petclinic.services.VetService;
-import com.sago.springframework.petclinic.services.map.OwnerServiceMap;
-import com.sago.springframework.petclinic.services.map.VetServiceMap;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
