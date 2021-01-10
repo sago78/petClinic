@@ -2,9 +2,11 @@ package com.sago.springframework.petclinic.bootstrap;
 
 import com.sago.springframework.petclinic.model.Owner;
 import com.sago.springframework.petclinic.model.Pet;
+import com.sago.springframework.petclinic.model.PetType;
 import com.sago.springframework.petclinic.model.Vet;
 import com.sago.springframework.petclinic.services.OwnerService;
 import com.sago.springframework.petclinic.services.PetService;
+import com.sago.springframework.petclinic.services.PetTypeService;
 import com.sago.springframework.petclinic.services.VetService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
@@ -15,11 +17,13 @@ public class DataLoader implements CommandLineRunner {
     private final OwnerService ownerService;
     private final VetService vetService;
     private final PetService petService;
+    private final PetTypeService petTypeService;
 
-    public DataLoader(OwnerService ownerService, VetService vetService, PetService petService) {
+    public DataLoader(OwnerService ownerService, VetService vetService, PetService petService, PetTypeService petTypeService) {
         this.ownerService = ownerService;
         this.vetService = vetService;
         this.petService = petService;
+        this.petTypeService = petTypeService;
     }
 
     @Override
@@ -53,6 +57,19 @@ public class DataLoader implements CommandLineRunner {
 
         System.out.println("Vets Loaded...");
 
+        PetType petType = new PetType();
+        petType.setId(1L);
+        petType.setName("Dog");
+        petTypeService.save(petType);
+
+        petType.setName("Cat");
+        petTypeService.save(petType);
+
+        petType.setName("Bird");
+        petTypeService.save(petType);
+
+        System.out.println("Pet Types Loaded...");
+
         Pet pet = new Pet();
         pet.setId(78L);
         pet.setName("Cherry");
@@ -64,5 +81,7 @@ public class DataLoader implements CommandLineRunner {
         petService.save(pet);
 
         System.out.println("Pets Loaded...");
+
+
     }
 }
