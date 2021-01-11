@@ -2,11 +2,12 @@ package com.sago.springframework.petclinic.model;
 
 import lombok.Data;
 
+import java.util.HashSet;
 import java.util.Set;
 
 public class Owner extends Person{
 
-    private Set<Pet> pets;
+    private Set<Pet> pets = new HashSet<>();
 
     private String address;
     private String city;
