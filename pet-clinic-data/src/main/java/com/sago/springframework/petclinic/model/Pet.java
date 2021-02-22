@@ -1,10 +1,19 @@
 package com.sago.springframework.petclinic.model;
 
+import javax.persistence.*;
 import java.time.LocalDate;
 
+@Entity
+@Table(name = "pets")
 public class Pet extends BaseEntity{
+
+    @ManyToOne
+    @JoinColumn(name = "pet_type_id")
     private PetType petType;
     private String name;
+
+    @ManyToOne
+    @JoinColumn(name = "owner_id")
     private Owner owner;
     private LocalDate birthDate;
 

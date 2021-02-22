@@ -2,9 +2,15 @@ package com.sago.springframework.petclinic.model;
 
 import lombok.Data;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 import java.util.HashSet;
 import java.util.Set;
 
+@Entity
+@Table(name="owners")
 public class Owner extends Person{
 
     private Set<Pet> pets = new HashSet<>();
@@ -13,6 +19,7 @@ public class Owner extends Person{
     private String city;
     private String telephone;
 
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "owner")
     public Set<Pet> getPets() {
         return pets;
     }
